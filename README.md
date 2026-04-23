@@ -136,19 +136,6 @@ This repository contains all lab assignments for the **Java Programming Laborato
 
 ---
 
-## 🛠️ How to Run
-
-**Prerequisites:** Java JDK 8 or above · NetBeans / IntelliJ / VS Code
-
-```bash
-# Compile
-javac FileName.java
-
-# Run
-java ClassName
-```
-
----
 
 ## 👩‍💻 Author
 
