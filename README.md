@@ -1,32 +1,20 @@
-<div align="center">
+# ☕ CS-23.202 — Java Laboratory
+### B.Tech 2nd Year | Mody University of Science & Technology
 
-# ☕ CS-23.202 — Java Programming Lab
-
-### B.Tech Computer Science & Engineering
-**Poornima University, Jaipur**
-
----
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![NetBeans](https://img.shields.io/badge/NetBeans-1B6AC6?style=for-the-badge&logo=apache-netbeans-ide&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Swing](https://img.shields.io/badge/Java%20Swing-GUI-orange?style=for-the-badge)
-![Programs](https://img.shields.io/badge/Programs-25-brightgreen?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Complete-success?style=for-the-badge)
-
-</div>
+![Java](https://img.shields.io/badge/Language-Java-orange?style=flat-square&logo=java)
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square)
+![Course](https://img.shields.io/badge/Course-CS--23.202-blue?style=flat-square)
 
 ---
 
-## 📌 About
+## 📋 About
 
-This repository contains **25 Java programs** completed as part of the **CS-23.202 Java Programming Lab** curriculum at **Poornima University**. The lab covers a wide range of core Java concepts — from object-oriented programming and exception handling to Java Swing GUI development, JDBC integration, multithreading, and the Java Collections Framework.
-
-All programs are written in clean, structured Java and are ready to run in **Apache NetBeans IDE**.
+This repository contains all lab assignments for the **Java Programming Laboratory (CS-23.202)** course, 2nd Year B.Tech, AI & Data Science — Mody University of Science & Technology. Each program demonstrates core Object-Oriented Programming concepts in Java.
 
 ---
 
-## 📋 Assignment Index
+## 📂 Assignment Index
+
 
 | # | Topic | Jump To |
 |---|-------|---------|
@@ -315,38 +303,12 @@ All programs are written in clean, structured Java and are ready to run in **Apa
 
 ---
 
-## 🛠️ Tools & Technologies
-
-| Tool / Technology | Purpose |
-|---|---|
-| ![Java](https://img.shields.io/badge/Java_17+-ED8B00?style=flat&logo=openjdk&logoColor=white) | Core programming language |
-| ![NetBeans](https://img.shields.io/badge/Apache_NetBeans-1B6AC6?style=flat&logo=apache-netbeans-ide&logoColor=white) | IDE for writing and running all programs |
-| ![Swing](https://img.shields.io/badge/Java_Swing-GUI_Framework-orange?style=flat) | GUI development (Programs 10–12, 14, 15) |
-| ![JDBC](https://img.shields.io/badge/JDBC-Database_Connectivity-blue?style=flat) | MySQL database integration (Program 14) |
-| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white) | Backend database for Program 14 |
-| ![Collections](https://img.shields.io/badge/Java_Collections-Framework-green?style=flat) | ArrayList, LinkedList, Stack, HashMap, TreeMap (Programs 20–25) |
-| ![Threads](https://img.shields.io/badge/Multithreading-Runnable_Interface-purple?style=flat) | Thread management (Programs 17–18) |
-| ![File I/O](https://img.shields.io/badge/File_I%2FO-Byte_%26_Char_Streams-red?style=flat) | File operations (Program 19) |
-
----
-
 ## 👩‍💻 Author
 
-<div align="center">
-
-### Smiksha
-**B.Tech Computer Science & Engineering**  
-Poornima University, Jaipur
-
-[![GitHub](https://img.shields.io/badge/GitHub-smiiksha-181717?style=for-the-badge&logo=github)](https://github.com/smiiksha)
-
-</div>
+**Samiksha Rana**  
+B.Tech — AI & Data Science, Mody University of Science & Technology  
+🔗 [github.com/smiiksha](https://github.com/smiiksha)
 
 ---
 
-<div align="center">
-
-*CS-23.202 Java Programming Lab — Poornima University*  
-*All 25 programs completed as part of the official lab curriculum.*
-
-</div>
+> *Repository maintained as part of academic coursework. New assignments added progressively.*
