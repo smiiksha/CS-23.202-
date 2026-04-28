@@ -31,7 +31,7 @@ This repository contains all lab assignments for the **Advanced Programming Labo
 | 11 | Java Swing – Simple Calculator GUI | [Assignment 11](#assignment-11) |
 | 12 | Java Swing – Freehand Drawing App | [Assignment 12](#assignment-12) |
 | 13 | Division Class with Exception Handling | [Assignment 13](#assignment-13) |
-| 14 | Student Registration Form with JDBC | [Assignment 14](#assignment-14) |
+| 14 | Operations on 2D Array| [Assignment 14](#assignment-14) |
 | 15 | JFrame with 10 Buttons | [Assignment 15](#assignment-15) |
 | 16 | Three Classes Printing 1 to 100 with Class Name | [Assignment 16](#assignment-16) |
 | 17 | Three Classes Printing 1 to 10 (Without Threads) | [Assignment 17](#assignment-17) |
@@ -182,14 +182,10 @@ This repository contains all lab assignments for the **Advanced Programming Labo
 
 ### Assignment 14
 
-**A GUI registration form that stores student data in a MySQL database using JDBC.**
-
-> ⚙️ **Setup Required:** MySQL JDBC Driver (`mysql-connector-java.jar`) must be added to NetBeans project libraries.  
-> Run the following SQL before executing: `CREATE DATABASE college; USE college; CREATE TABLE students(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), roll VARCHAR(20), branch VARCHAR(30), email VARCHAR(50));`
-
 | Code | Output |
 |------|--------|
-| <pre>import javax.swing.*;<br>import java.awt.*;<br>import java.awt.event.*;<br>import java.sql.*;<br><br>public class StudentRegistration extends JFrame {<br>    JTextField nameField   = new JTextField(20);<br>    JTextField rollField   = new JTextField(20);<br>    JTextField branchField = new JTextField(20);<br>    JTextField emailField  = new JTextField(20);<br>    JLabel statusLabel     = new JLabel(" ");<br><br>    StudentRegistration() {<br>        setTitle("Student Registration");<br>        setSize(400, 300);<br>        setDefaultCloseOperation(EXIT_ON_CLOSE);<br>        setLayout(new GridLayout(6, 2, 5, 5));<br><br>        add(new JLabel("Name:"));    add(nameField);<br>        add(new JLabel("Roll No:")); add(rollField);<br>        add(new JLabel("Branch:"));  add(branchField);<br>        add(new JLabel("Email:"));   add(emailField);<br><br>        JButton submit = new JButton("Register");<br>        submit.addActionListener(e -> saveToDatabase());<br>        add(submit); add(statusLabel);<br>        setVisible(true);<br>    }<br><br>    void saveToDatabase() {<br>        String url  = "jdbc:mysql://localhost:3306/college";<br>        String user = "root";<br>        String pass = "";  // change to your password<br>        try (Connection con = DriverManager.getConnection(url, user, pass)) {<br>            String sql = "INSERT INTO students(name, roll, branch, email) VALUES(?,?,?,?)";<br>            PreparedStatement ps = con.prepareStatement(sql);<br>            ps.setString(1, nameField.getText());<br>            ps.setString(2, rollField.getText());<br>            ps.setString(3, branchField.getText());<br>            ps.setString(4, emailField.getText());<br>            ps.executeUpdate();<br>            statusLabel.setText("Registered successfully!");<br>        } catch (SQLException ex) {<br>            statusLabel.setText("DB Error: " + ex.getMessage());<br>        }<br>    }<br><br>    public static void main(String[] args) {<br>        new StudentRegistration();<br>    }<br>}</pre> | outputtt |
+| import java.util.Scanner;public class TwoDMatrix { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int rows, cols; System.out.print("Enter number of rows: "); rows = sc.nextInt(); System.out.print("Enter number of columns: "); cols = sc.nextInt(); int[][] A = new int[rows][cols]; int[][] B = new int[rows][cols]; int[][] sum = new int[rows][cols]; int[][] multiply = new int[rows][cols]; System.out.println("\nEnter elements of First Matrix:"); for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { A[i][j] = sc.nextInt(); } } System.out.println("\nEnter elements of Second Matrix:"); for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { B[i][j] = sc.nextInt(); } } // Addition for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { sum[i][j] = A[i][j] + B[i][j]; } } // Multiplication for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { multiply[i][j] = 0; for (int k = 0; k < cols; k++) { multiply[i][j] += A[i][k] * B[k][j]; } } } System.out.println("\nAddition of Matrices:"); for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { System.out.print(sum[i][j] + " "); } System.out.println(); } System.out.println("\nMultiplication of Matrices:"); for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) { System.out.print(multiply[i][j] + " "); } System.out.println(); } sc.close(); }} | <img width="848" height="821" alt="image" src="https://github.com/user-attachments/assets/ce3121e8-9893-491c-911e-5de5983f0079" />
+ |
 
 ---
 
