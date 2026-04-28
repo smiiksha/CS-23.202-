@@ -1,3 +1,50 @@
+☕ CS-23.202 — Java Laboratory
+B.Tech 2nd Year | Mody University of Science & Technology
+Show Image
+Show Image
+Show Image
+
+📋 About
+This repository contains all lab assignments for the Java Programming Laboratory (CS-23.202) course, 2nd Year B.Tech, AI & Data Science — Mody University of Science & Technology. Each program demonstrates core Object-Oriented Programming concepts in Java.
+
+📂 Assignment Index
+#Title01Write a class with four methods add, subtract, multiply and divide and test all the methods in the main02Write a class for addition of two distances where each distance is given in mm, cm, m03Write a class for addition of two times where each time is given in hr, min, sec04Write a class for addition of two distances where each distance is given in m and cm05Write a class for addition of two times where each time is given in hr and min06Write a class with necessary methods to reverse a 1D array07Write a class with necessary methods for matrix operations: transpose, addition, multiplication, sum of rows, columns, and diagonals08Collect all 5 codes of C language (Factorial, Armstrong, Palindrome, Fibonacci, Prime) and convert them into object-oriented Java09Method overriding with parent class reference — Animal, Dog, Cat10Java Swing — Draw and fill shapes (rectangle and oval) with color buttons11Java Swing — Simple Calculator GUI with two inputs and +, -, *, / buttons12Java Swing — Freehand Drawing App with color buttons and brush size slider13Division class with integer division, float division, remainder, and batch division — all with exception handling14Student Registration Form using Java Swing and JDBC (MySQL)15JFrame with 10 buttons each performing a different functionality16Three classes (A, B, C) each printing 1 to 100 along with the class name17Three classes printing 1 to 10 sequentially without threads18Three classes printing 1 to 10 using the Runnable interface19File copy using Byte Stream and Character Stream20ArrayList operations: add, remove, search, update, and iteration21LinkedList operations: insert at beginning, middle, end, delete, search, display22Stack operations using Java Collections Framework23HashMap operations: insert, retrieve, remove, and iterate key-value pairs24TreeMap operations: insert, display in sorted order, search, and remove25Stack implementation using arrays with overflow and underflow handling
+
+💻 Assignments
+
+Assignment 1
+Write a class with four methods add, subtract, multiply and divide and test all the methods in the main.
+CodeOutput```javapublic class Arithmetic {
+public int add(int a, int b) {
+    return a + b;
+}
+
+public int subtract(int a, int b) {
+    return a - b;
+}
+
+public int multiply(int a, int b) {
+    return a * b;
+}
+
+public double divide(int a, int b) {
+    if (b == 0) {
+        System.out.println("Division by zero not allowed!");
+        return 0;
+    }
+    return (double) a / b;
+}
+
+public static void main(String[] args) {
+    Arithmetic obj = new Arithmetic();
+    int a = 20, b = 4;
+    System.out.println("Add: " + obj.add(a, b));
+    System.out.println("Subtract: " + obj.subtract(a, b));
+    System.out.println("Multiply: " + obj.multiply(a, b));
+    System.out.println("Divide: " + obj.divide(a, b));
+}
+}
+
 ---
 
 ### Assignment 2
