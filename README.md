@@ -1,4 +1,4 @@
-# ☕ CS-23.202 — Java Laboratory
+# ☕ CS-23.202 — Advanced Programming Laboratory
 ### B.Tech 2nd Year | Mody University of Science & Technology
 
 ![Java](https://img.shields.io/badge/Language-Java-orange?style=flat-square&logo=java)
@@ -9,7 +9,7 @@
 
 ## 📋 About
 
-This repository contains all lab assignments for the **Java Programming Laboratory (CS-23.202)** course, 2nd Year B.Tech, AI & Data Science — Mody University of Science & Technology. Each program demonstrates core Object-Oriented Programming concepts in Java.
+This repository contains all lab assignments for the **Advanced Programming Laboratory (CS-23.202)** course, 2nd Year B.Tech, AI & DL — Mody University of Science & Technology. Each program demonstrates core Object-Oriented Programming concepts in Java.
 
 ---
 
