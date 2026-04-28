@@ -1,141 +1,1294 @@
-# ☕ CS-23.202 — Java Laboratory
-### B.Tech 2nd Year | Mody University of Science & Technology
-
-![Java](https://img.shields.io/badge/Language-Java-orange?style=flat-square&logo=java)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square)
-![Course](https://img.shields.io/badge/Course-CS--23.202-blue?style=flat-square)
-
----
-
-## 📋 About
-
-This repository contains all lab assignments for the **Java Programming Laboratory (CS-23.202)** course, 2nd Year B.Tech, AI & Data Science — Mody University of Science & Technology. Each program demonstrates core Object-Oriented Programming concepts in Java.
-
----
-
-## 📂 Assignment Index
-
-| # | Title |
-|---|-------|
-| [01](#assignment-1) | Write a class with four methods add, subtract, multiply and divide and test all the methods in the main |
-| [02](#assignment-2) | Write a class for addition of two distances where each distance is given in mm, cm, m |
-| [03](#assignment-3) | Write a class for addition of two times where each time is given in hr, min, sec |
-| [04](#assignment-4) | Write a class for addition of two distances where each distance is given in m and cm |
-| [05](#assignment-5) | Write a class for addition of two times where each time is given in hr and min |
-| [06](#assignment-6) | Write a class to reverse a 1D array |
-| [07](#assignment-7) | Write a class with necessary number of methods for matrix operations |
-| [08](#assignment-8) | Collect all 5 codes of C language and convert them into object oriented Java |
-| [09](#assignment-9) | Classes A, B, C printing 1–100 sequentially |
-| [10](#assignment-10) | Multithreading with Thread classes X, Y, Z |
-| [11](#assignment-11) | Multithreading using Runnable interface (Alpha, Beta, Gamma) |
-| [12–14](#assignments-12-14) | Coming Soon |
-
----
-
-## 💻 Assignments
-
----
-
-### Assignment 1
-**Write a class with four methods add, subtract, multiply and divide and test all the methods in the main.**
-
-| Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br><br>class Operation {<br><br>    int a,b;<br><br>    void input(){<br>        Scanner s = new Scanner(System.in);<br>        System.out.println("Enter first number");<br>        a = s.nextInt();<br>        System.out.println("Enter second number");<br>        b = s.nextInt();<br>    }<br>    void add(){<br>        System.out.println("Addition = " + (a+b));<br>    }<br>    void sub(){<br>        System.out.println("Subtraction = " + (a-b));<br>    }<br>    void mul(){<br>        System.out.println("Multiplication = " + (a*b));<br>    }<br>    void div(){<br>        System.out.println("Division = " + (a/b));<br>    }<br>}<br>public class Calculator {<br>    public static void main(String[] args) {<br>        Operation obj = new Operation();<br>        obj.input();<br>        obj.add();<br>        obj.sub();<br>        obj.mul();<br>        obj.div();<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/cab2040d-0b33-41b4-87d9-8492f3bb6381) |
-
 ---
 
 ### Assignment 2
+
 **Write a class for addition of two distances where each distance is given in mm, cm, m.**
 
 | Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br>public class Distance {<br>    public static void main(String[]args){<br>        Test t1=new Test();<br>        Test t2=new Test();<br>        Test result=new Test();<br>        t1.input();<br>        t2.input();<br>        result.add(t1, t2);<br>        result.output();<br>    }<br>}<br><br>class Test{<br>    int m;<br>    int cm;<br>    int mm;<br>    void input(){<br>        Scanner s1=new Scanner(System.in);<br>        System.out.println("enter distance in m");<br>        m=s1.nextInt();<br>        Scanner s2=new Scanner(System.in);<br>        System.out.println("enter distance in cm");<br>        cm=s2.nextInt();<br>        Scanner s3=new Scanner(System.in);<br>        System.out.println("enter distance in mm");<br>        mm=s3.nextInt();<br>    }<br>    void output(){<br>        System.out.println("Distance in m"+m);<br>        System.out.println("Distance in cm"+cm);<br>        System.out.println("Distance in mm"+mm);<br>    }<br>    void add(Test d1,Test d2){<br>        m=d1.m+d2.m;<br>        cm=d1.cm+d2.cm;<br>        mm=d1.mm+d2.mm;<br>        if(mm>=10){<br>            cm=cm+1;<br>            mm=mm-10;<br>        }<br>        if(cm>=100){<br>            m=m+1;<br>            cm=cm-100;<br>        }<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/56844e6f-4fb8-4c69-8882-4e21493814c1) |
+| --- | --- |
+| ```java
+public class Distance3 {
+    int meters, centimeters, millimeters;
+
+    Distance3(int m, int cm, int mm) {
+        this.meters = m;
+        this.centimeters = cm;
+        this.millimeters = mm;
+    }
+
+    public static Distance3 add(Distance3 d1, Distance3 d2) {
+        int totalMM = d1.millimeters + d2.millimeters;
+        int totalCM = d1.centimeters + d2.centimeters + totalMM / 10;
+        totalMM = totalMM % 10;
+        int totalM = d1.meters + d2.meters + totalCM / 100;
+        totalCM = totalCM % 100;
+        return new Distance3(totalM, totalCM, totalMM);
+    }
+
+    public void display() {
+        System.out.println(meters + " m, " + centimeters + " cm, " + millimeters + " mm");
+    }
+
+    public static void main(String[] args) {
+        Distance3 d1 = new Distance3(3, 75, 8);
+        Distance3 d2 = new Distance3(2, 45, 6);
+        System.out.print("Distance 1: "); d1.display();
+        System.out.print("Distance 2: "); d2.display();
+        Distance3 result = Distance3.add(d1, d2);
+        System.out.print("Sum: "); result.display();
+    }
+}
+``````````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 3
+
 **Write a class for addition of two times where each time is given in hr, min, sec.**
 
 | Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br><br>public class TimeHMS {<br>    public static void main(String[] args){<br>        TRY t1 = new TRY();<br>        TRY t2 = new TRY();<br>        TRY result = new TRY();<br>        t1.input();<br>        t2.input();<br>        result.add(t1,t2);<br>        result.output();<br>    }<br>}<br><br>class TRY{<br>    int hr,min,sec;<br>    void input(){<br>        Scanner s = new Scanner(System.in);<br>        System.out.println("Enter hours");<br>        hr = s.nextInt();<br>        System.out.println("Enter minutes");<br>        min = s.nextInt();<br>        System.out.println("Enter seconds");<br>        sec = s.nextInt();<br>    }<br>    void output(){<br>        System.out.println(hr+" hr "+min+" min "+sec+" sec");<br>    }<br>    void add(TRY t1,TRY t2){<br>        sec = t1.sec + t2.sec;<br>        min = t1.min + t2.min;<br>        hr = t1.hr + t2.hr;<br>        if(sec>=60){<br>            min = min + 1;<br>            sec = sec - 60;<br>        }<br>        if(min>=60){<br>            hr = hr + 1;<br>            min = min - 60;<br>        }<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/f3a5fd3f-af8c-4f3e-8cbc-2e5425c079f9) |
+| --- | --- |
+| ```java
+public class Time3 {
+    int hours, minutes, seconds;
+
+    Time3(int h, int m, int s) {
+        this.hours = h;
+        this.minutes = m;
+        this.seconds = s;
+    }
+
+    public static Time3 add(Time3 t1, Time3 t2) {
+        int totalSec = t1.seconds + t2.seconds;
+        int totalMin = t1.minutes + t2.minutes + totalSec / 60;
+        totalSec = totalSec % 60;
+        int totalHr = t1.hours + t2.hours + totalMin / 60;
+        totalMin = totalMin % 60;
+        return new Time3(totalHr, totalMin, totalSec);
+    }
+
+    public void display() {
+        System.out.println(hours + " hr, " + minutes + " min, " + seconds + " sec");
+    }
+
+    public static void main(String[] args) {
+        Time3 t1 = new Time3(2, 45, 50);
+        Time3 t2 = new Time3(1, 30, 25);
+        System.out.print("Time 1: "); t1.display();
+        System.out.print("Time 2: "); t2.display();
+        Time3 result = Time3.add(t1, t2);
+        System.out.print("Sum: "); result.display();
+    }
+}
+`````````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 4
+
 **Write a class for addition of two distances where each distance is given in m and cm.**
 
 | Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br><br>public class DistanceMC {<br>    public static void main(String[] args){<br>        T d1 = new T();<br>        T d2 = new T();<br>        T result = new T();<br>        d1.input();<br>        d2.input();<br>        result.add(d1,d2);<br>        result.output();<br>    }<br>}<br><br>class T{<br>    int m,cm;<br>    void input(){<br>        Scanner s = new Scanner(System.in);<br>        System.out.println("Enter meter");<br>        m = s.nextInt();<br>        System.out.println("Enter centimeter");<br>        cm = s.nextInt();<br>    }<br>    void output(){<br>        System.out.println("Meter = "+m);<br>        System.out.println("Centimeter = "+cm);<br>    }<br>    void add(T d1,T d2){<br>        cm = d1.cm + d2.cm;<br>        m = d1.m + d2.m;<br>        if(cm>=100){<br>            m = m + 1;<br>            cm = cm - 100;<br>        }<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/03271c3d-f033-431d-81eb-ffff622641cc) |
+| --- | --- |
+| ```java
+public class Distance2 {
+    int meters, centimeters;
+
+    Distance2(int m, int cm) {
+        this.meters = m;
+        this.centimeters = cm;
+    }
+
+    public static Distance2 add(Distance2 d1, Distance2 d2) {
+        int totalCM = d1.centimeters + d2.centimeters;
+        int totalM = d1.meters + d2.meters + totalCM / 100;
+        totalCM = totalCM % 100;
+        return new Distance2(totalM, totalCM);
+    }
+
+    public void display() {
+        System.out.println(meters + " m, " + centimeters + " cm");
+    }
+
+    public static void main(String[] args) {
+        Distance2 d1 = new Distance2(5, 80);
+        Distance2 d2 = new Distance2(3, 60);
+        System.out.print("Distance 1: "); d1.display();
+        System.out.print("Distance 2: "); d2.display();
+        Distance2 result = Distance2.add(d1, d2);
+        System.out.print("Sum: "); result.display();
+    }
+}
+````````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 5
+
 **Write a class for addition of two times where each time is given in hr and min.**
 
 | Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br><br>public class TimeHM {<br>    public static void main(String[] args){<br>        Tt t1 = new Tt();<br>        Tt t2 = new Tt();<br>        Tt result = new Tt();<br>        t1.input();<br>        t2.input();<br>        result.add(t1,t2);<br>        result.output();<br>    }<br>}<br><br>class Tt{<br>    int hr,min;<br>    void input(){<br>        Scanner s = new Scanner(System.in);<br>        System.out.println("Enter hours");<br>        hr = s.nextInt();<br>        System.out.println("Enter minutes");<br>        min = s.nextInt();<br>    }<br>    void output(){<br>        System.out.println(hr+" hr "+min+" min");<br>    }<br>    void add(Tt t1,Tt t2){<br>        min = t1.min + t2.min;<br>        hr = t1.hr + t2.hr;<br>        if(min>=60){<br>            hr = hr + 1;<br>            min = min - 60;<br>        }<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/8cadc746-890a-4eb2-970f-8ae99b089335) |
+| --- | --- |
+| ```java
+public class Time2 {
+    int hours, minutes;
+
+    Time2(int h, int m) {
+        this.hours = h;
+        this.minutes = m;
+    }
+
+    public static Time2 add(Time2 t1, Time2 t2) {
+        int totalMin = t1.minutes + t2.minutes;
+        int totalHr = t1.hours + t2.hours + totalMin / 60;
+        totalMin = totalMin % 60;
+        return new Time2(totalHr, totalMin);
+    }
+
+    public void display() {
+        System.out.println(hours + " hr, " + minutes + " min");
+    }
+
+    public static void main(String[] args) {
+        Time2 t1 = new Time2(3, 50);
+        Time2 t2 = new Time2(2, 40);
+        System.out.print("Time 1: "); t1.display();
+        System.out.print("Time 2: "); t2.display();
+        Time2 result = Time2.add(t1, t2);
+        System.out.print("Sum: "); result.display();
+    }
+}
+```````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 6
-**Write a class to reverse a 1D array. Also includes C-to-Java conversion programs: Factorial, Palindrome, Armstrong, Prime.**
+
+**Write a class with necessary methods to reverse a 1D array.**
 
 | Code | Output |
-|------|--------|
-| <pre>import java.util.Scanner;<br><br>public class PalindromeNumber {<br>    public static void main(String[] args){<br>        Scanner sc=new Scanner(System.in);<br>        int num,original,reverse=0,remainder;<br>        System.out.println("enter a number:");<br>        num=sc.nextInt();<br>        original=num;<br>        while (num!=0){<br>            remainder=num%10;<br>            reverse=reverse*10+remainder;<br>            num=num/10;<br>        }<br>        if(original==reverse){<br>            System.out.println("number is palindrome");<br>        }<br>        else{<br>            System.out.println("number is not palindrome");<br>        }<br>    }<br>}<br><br>public class NumberPrograms {<br>    public static void main(String[] args){<br>        Tt3 t = new Tt3();<br>        t.input();<br>        t.factorial();<br>        t.palindrome();<br>        t.armstrong();<br>        t.prime();<br>    }<br>}<br><br>class Tt3{<br>    int n;<br>    void input(){<br>        Scanner s = new Scanner(System.in);<br>        System.out.println("Enter number");<br>        n = s.nextInt();<br>    }<br>    void factorial(){<br>        int fact = 1;<br>        for(int i=1;i<=n;i++){<br>            fact = fact * i;<br>        }<br>        System.out.println("Factorial = "+fact);<br>    }<br>    void palindrome(){<br>        int temp = n;<br>        int rev = 0;<br>        while(temp>0){<br>            rev = rev*10 + temp%10;<br>            temp = temp/10;<br>        }<br>        if(rev==n)<br>            System.out.println("Palindrome");<br>        else<br>            System.out.println("Not Palindrome");<br>    }<br>    void armstrong(){<br>        int temp = n;<br>        int sum = 0;<br>        while(temp>0){<br>            int d = temp%10;<br>            sum = sum + d*d*d;<br>            temp = temp/10;<br>        }<br>        if(sum==n)<br>            System.out.println("Armstrong");<br>        else<br>            System.out.println("Not Armstrong");<br>    }<br>    void prime(){<br>        int flag = 0;<br>        for(int i=2;i<n;i++){<br>            if(n%i==0){<br>                flag = 1;<br>                break;<br>            }<br>        }<br>        if(flag==0)<br>            System.out.println("Prime");<br>        else<br>            System.out.println("Not Prime");<br>    }<br>}</pre> | ![output](https://github.com/user-attachments/assets/5dca7759-364b-4160-b884-603e963411e2) |
+| --- | --- |
+| ```java
+public class ReverseArray {
+
+    public void inputArray(int[] arr) {
+        System.out.print("Original Array: ");
+        for (int val : arr) System.out.print(val + " ");
+        System.out.println();
+    }
+
+    public void reverseArray(int[] arr) {
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    public void displayArray(int[] arr) {
+        System.out.print("Reversed Array: ");
+        for (int val : arr) System.out.print(val + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ReverseArray ra = new ReverseArray();
+        int[] arr = {10, 20, 30, 40, 50};
+        ra.inputArray(arr);
+        ra.reverseArray(arr);
+        ra.displayArray(arr);
+    }
+}
+``````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 7
-**Write a class with necessary number of methods for matrix operations: transpose, addition, multiplication, sum of two rows, sum of columns and sum of diagonals of the matrix.**
 
-> *Coming soon — code will be added here.*
+**Write a class with necessary methods for matrix operations: transpose, addition, multiplication, sum of rows, sum of columns, and sum of diagonals.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+public class MatrixOps {
+    int rows, cols;
+    int[][] matrix;
+
+    MatrixOps(int[][] mat) {
+        this.matrix = mat;
+        this.rows = mat.length;
+        this.cols = mat[0].length;
+    }
+
+    public void display() {
+        for (int[] row : matrix) {
+            for (int val : row) System.out.printf("%5d", val);
+            System.out.println();
+        }
+    }
+
+    public int[][] transpose() {
+        int[][] result = new int[cols][rows];
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                result[j][i] = matrix[i][j];
+        return result;
+    }
+
+    public int[][] add(MatrixOps other) {
+        int[][] result = new int[rows][cols];
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                result[i][j] = matrix[i][j] + other.matrix[i][j];
+        return result;
+    }
+
+    public int[][] multiply(MatrixOps other) {
+        int[][] result = new int[rows][other.cols];
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < other.cols; j++)
+                for (int k = 0; k < cols; k++)
+                    result[i][j] += matrix[i][k] * other.matrix[k][j];
+        return result;
+    }
+
+    public void sumOfRows() {
+        System.out.println("Sum of each row:");
+        for (int i = 0; i < rows; i++) {
+            int sum = 0;
+            for (int j = 0; j < cols; j++) sum += matrix[i][j];
+            System.out.println("Row " + (i+1) + ": " + sum);
+        }
+    }
+
+    public void sumOfCols() {
+        System.out.println("Sum of each column:");
+        for (int j = 0; j < cols; j++) {
+            int sum = 0;
+            for (int i = 0; i < rows; i++) sum += matrix[i][j];
+            System.out.println("Col " + (j+1) + ": " + sum);
+        }
+    }
+
+    public void sumOfDiagonals() {
+        int mainDiag = 0, antiDiag = 0;
+        for (int i = 0; i < rows; i++) {
+            mainDiag += matrix[i][i];
+            antiDiag += matrix[i][cols - 1 - i];
+        }
+        System.out.println("Main Diagonal Sum: " + mainDiag);
+        System.out.println("Anti Diagonal Sum: " + antiDiag);
+    }
+
+    public static void main(String[] args) {
+        int[][] m1 = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][] m2 = {{9,8,7},{6,5,4},{3,2,1}};
+        MatrixOps mat1 = new MatrixOps(m1);
+        MatrixOps mat2 = new MatrixOps(m2);
+
+        System.out.println("Matrix 1:"); mat1.display();
+        System.out.println("Transpose:"); new MatrixOps(mat1.transpose()).display();
+        System.out.println("Addition:"); new MatrixOps(mat1.add(mat2)).display();
+        System.out.println("Multiplication:"); new MatrixOps(mat1.multiply(mat2)).display();
+        mat1.sumOfRows();
+        mat1.sumOfCols();
+        mat1.sumOfDiagonals();
+    }
+}
+`````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 8
-**Collect all 5 codes of C language like factorial, armstrong, palindrome etc and convert them into object oriented in Java and test the result in main.**
 
-> *See Assignment 6 for reference implementation.*
+**Collect all 5 codes of C language (Factorial, Armstrong, Palindrome, Fibonacci, Prime) and convert them into object-oriented Java and test the result in main.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+public class ClassicPrograms {
+
+    // 1. Factorial
+    public long factorial(int n) {
+        if (n <= 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    // 2. Armstrong Number
+    public boolean isArmstrong(int num) {
+        int temp = num, sum = 0, digits = String.valueOf(num).length();
+        while (temp != 0) {
+            int d = temp % 10;
+            sum += Math.pow(d, digits);
+            temp /= 10;
+        }
+        return sum == num;
+    }
+
+    // 3. Palindrome
+    public boolean isPalindrome(int num) {
+        int reversed = 0, temp = num;
+        while (temp != 0) {
+            reversed = reversed * 10 + temp % 10;
+            temp /= 10;
+        }
+        return reversed == num;
+    }
+
+    // 4. Fibonacci Series
+    public void fibonacci(int n) {
+        int a = 0, b = 1;
+        System.out.print("Fibonacci: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+            int c = a + b;
+            a = b;
+            b = c;
+        }
+        System.out.println();
+    }
+
+    // 5. Prime Number
+    public boolean isPrime(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++)
+            if (num % i == 0) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        ClassicPrograms cp = new ClassicPrograms();
+
+        System.out.println("Factorial of 6: " + cp.factorial(6));
+        System.out.println("153 is Armstrong: " + cp.isArmstrong(153));
+        System.out.println("121 is Palindrome: " + cp.isPalindrome(121));
+        cp.fibonacci(10);
+        System.out.println("17 is Prime: " + cp.isPrime(17));
+    }
+}
+````````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 9
-**Create three classes A, B, C — each with a fun() method that prints its label from 1 to 100. Call them sequentially from main.**
+
+**Method overriding with parent class reference — create a parent class Animal and two child classes Dog and Cat, each overriding the sound() method, called via parent reference.**
 
 | Code | Output |
-|------|--------|
-| <pre>package com.mycompany.samikshac2;<br><br>// Class A<br>class A {<br>    void fun() {<br>        for (int i = 1; i <= 100; i++) {<br>            System.out.println("a" + i);<br>        }<br>    }<br>}<br><br>// Class B<br>class B {<br>    void fun() {<br>        for (int i = 1; i <= 100; i++) {<br>            System.out.println("b" + i);<br>        }<br>    }<br>}<br><br>// Class C<br>class C {<br>    void fun() {<br>        for (int i = 1; i <= 100; i++) {<br>            System.out.println("c" + i);<br>        }<br>    }<br>}<br><br>// Main class<br>public class main {<br>    public static void main(String[] args) {<br>        A objA = new A();<br>        B objB = new B();<br>        C objC = new C();<br>        objA.fun();<br>        objB.fun();<br>        objC.fun();<br>    }<br>}</pre> | ![output1](https://github.com/user-attachments/assets/f4e6a370-7798-4d19-8742-c84a52e80964) ![output2](https://github.com/user-attachments/assets/aa8fde25-bae7-46c6-a35e-a50dfb1d20d0) ![output3](https://github.com/user-attachments/assets/725d725a-49b3-4d3d-9d14-3dc8a28fe5cb) ![output4](https://github.com/user-attachments/assets/6d1b379a-0a95-4b2a-b576-654fd3c31a79) ![output5](https://github.com/user-attachments/assets/96337d58-3837-4879-9862-a3a9bf1a3493) ![output6](https://github.com/user-attachments/assets/6fbd8154-6342-4080-ac91-86b072cf2bbb) ![output7](https://github.com/user-attachments/assets/c1dcede9-7669-493f-8a49-9d789901290f) ![output8](https://github.com/user-attachments/assets/e0b9ba29-f7e1-4e82-adba-1a650ea99a9d) ![output9](https://github.com/user-attachments/assets/9892582e-0efa-42cc-8878-38dd8f94bbf8) |
+| --- | --- |
+| ```java
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog says: Woof!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat says: Meow!");
+    }
+}
+
+public class OverrideDemo {
+    public static void main(String[] args) {
+        Animal ref;
+
+        ref = new Dog();
+        ref.sound();   // Calls Dog's sound()
+
+        ref = new Cat();
+        ref.sound();   // Calls Cat's sound()
+
+        ref = new Animal();
+        ref.sound();   // Calls Animal's sound()
+    }
+}
+```````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 10
-**Create three thread classes X, Y, Z — each prints its label 1 to 100 with a sleep of 100ms. Stop thread X after 1 second from main.**
+
+**Java Swing — Draw and fill shapes (rectangle and oval) with options to toggle fill and change colors.**
 
 | Code | Output |
-|------|--------|
-| <pre>package com.mycompany.samikshac2;<br><br>// Thread class X<br>class X extends Thread {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("x" + i);<br>            try {<br>                sleep(100);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>class Y extends Thread {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("y" + i);<br>            try {<br>                sleep(100);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>class Z extends Thread {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("z" + i);<br>            try {<br>                sleep(100);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>public class ThreadMain {<br>    public static void main(String[] args) {<br>        X t1 = new X();<br>        Y t2 = new Y();<br>        Z t3 = new Z();<br>        t1.start();<br>        t2.start();<br>        t3.start();<br>        try {<br>            Thread.sleep(1000);<br>            t1.stop();<br>        } catch(Exception e) {}<br>    }<br>}</pre> | ![output1](https://github.com/user-attachments/assets/ac55c702-d9db-4450-a3b9-f38f9919cbd3) ![output2](https://github.com/user-attachments/assets/76319b40-e4d6-4bc4-ba64-b2613a2e8782) ![output3](https://github.com/user-attachments/assets/d5414ef8-383b-4c61-aa37-61c0bc2084a9) ![output4](https://github.com/user-attachments/assets/595886b6-6e8a-4583-9a9e-c7940326045f) ![output5](https://github.com/user-attachments/assets/f81a0a1c-664d-43fb-94c5-c646c6d5fd4a) ![output6](https://github.com/user-attachments/assets/2d5ca806-cc1a-42ca-a9f1-e03ce7a57398) ![output7](https://github.com/user-attachments/assets/2eaee1a3-2c7f-4184-aa54-40857be7e261) ![output8](https://github.com/user-attachments/assets/ce8ccd56-4145-42fd-9c6b-d56b91aa2fcc) ![output9](https://github.com/user-attachments/assets/89bb7854-1fac-455f-891a-7020959d9a60) ![output10](https://github.com/user-attachments/assets/a8d5ffd1-2275-4114-8073-d224e1e47e6a) |
+| --- | --- |
+| ```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ShapeDrawer extends JFrame {
+    String shape = "Rectangle";
+    Color color = Color.RED;
+    boolean fill = false;
+
+    DrawPanel panel = new DrawPanel();
+
+    ShapeDrawer() {
+        setTitle("Shape Drawer");
+        setSize(600, 500);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        JPanel controls = new JPanel();
+        JButton drawRect = new JButton("Rectangle");
+        JButton drawOval = new JButton("Oval");
+        JButton fillBtn  = new JButton("Fill");
+        JButton red      = new JButton("Red");
+        JButton black    = new JButton("Black");
+
+        drawRect.addActionListener(e -> { shape = "Rectangle"; fill = false; panel.repaint(); });
+        drawOval.addActionListener(e -> { shape = "Oval";      fill = false; panel.repaint(); });
+        fillBtn .addActionListener(e -> { fill = !fill;        panel.repaint(); });
+        red     .addActionListener(e -> { color = Color.RED;   panel.repaint(); });
+        black   .addActionListener(e -> { color = Color.BLACK; panel.repaint(); });
+
+        controls.add(drawRect); controls.add(drawOval);
+        controls.add(fillBtn);  controls.add(red); controls.add(black);
+
+        add(controls, BorderLayout.NORTH);
+        add(panel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    class DrawPanel extends JPanel {
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.setColor(color);
+            if (shape.equals("Rectangle")) {
+                if (fill) g.fillRect(150, 100, 250, 150);
+                else      g.drawRect(150, 100, 250, 150);
+            } else {
+                if (fill) g.fillOval(150, 100, 250, 150);
+                else      g.drawOval(150, 100, 250, 150);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new ShapeDrawer();
+    }
+}
+``````````````````| *(add output screenshot here)* |
 
 ---
 
 ### Assignment 11
-**Implement multithreading using the Runnable interface with three classes: Alpha, Beta, Gamma — each printing 1 to 100. Stop Alpha thread after 500ms.**
+
+**Java Swing — Simple Calculator GUI that takes two inputs and performs +, -, *, /.**
 
 | Code | Output |
-|------|--------|
-| <pre>package com.mycompany.samikshac2;<br><br>class Alpha implements Runnable {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("alpha" + i);<br>            try {<br>                Thread.sleep(50);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>class Beta implements Runnable {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("beta" + i);<br>            try {<br>                Thread.sleep(50);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>class Gamma implements Runnable {<br>    public void run() {<br>        for(int i = 1; i <= 100; i++) {<br>            System.out.println("gamma" + i);<br>            try {<br>                Thread.sleep(50);<br>            } catch(Exception e) {}<br>        }<br>    }<br>}<br><br>public class RunnableProgram {<br>    public static void main(String[] args) {<br>        Alpha a = new Alpha();<br>        Beta b = new Beta();<br>        Gamma c = new Gamma();<br>        Thread t1 = new Thread(a);<br>        Thread t2 = new Thread(b);<br>        Thread t3 = new Thread(c);<br>        t1.start();<br>        t2.start();<br>        t3.start();<br>        try {<br>            Thread.sleep(500);<br>            t1.stop();<br>        } catch(Exception e) {}<br>    }<br>}</pre> | ![output1](https://github.com/user-attachments/assets/fa25dead-0488-4adf-8240-fc6baf420d4c) ![output2](https://github.com/user-attachments/assets/3896cbc3-9651-4a85-8a16-4032bc772715) ![output3](https://github.com/user-attachments/assets/cdf76977-7d23-49dd-92fd-6bf0694edc61) ![output4](https://github.com/user-attachments/assets/ae455223-b9ab-45a6-ab2e-15f1b01a4410) ![output5](https://github.com/user-attachments/assets/dd6294c8-112a-4f63-b238-c9b2f16c57b2) ![output6](https://github.com/user-attachments/assets/610f64e0-b77d-4d70-a1d5-40acea615cba) ![output7](https://github.com/user-attachments/assets/01ca8c34-3a33-4508-928d-37f58ab27328) ![output8](https://github.com/user-attachments/assets/07faeaef-6a74-4940-8c55-8b5f4a824521) |
+| --- | --- |
+| ```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Calculator extends JFrame {
+    JTextField num1 = new JTextField(10);
+    JTextField num2 = new JTextField(10);
+    JTextField result = new JTextField(15);
+
+    Calculator() {
+        setTitle("Simple Calculator");
+        setSize(400, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new GridLayout(5, 2, 5, 5));
+
+        result.setEditable(false);
+
+        add(new JLabel("Number 1:")); add(num1);
+        add(new JLabel("Number 2:")); add(num2);
+
+        JButton add = new JButton("+");
+        JButton sub = new JButton("-");
+        JButton mul = new JButton("*");
+        JButton div = new JButton("/");
+
+        add.addActionListener(e -> compute('+'));
+        sub.addActionListener(e -> compute('-'));
+        mul.addActionListener(e -> compute('*'));
+        div.addActionListener(e -> compute('/'));
+
+        add(add); add(sub); add(mul); add(div);
+        add(new JLabel("Result:")); add(result);
+        setVisible(true);
+    }
+
+    void compute(char op) {
+        try {
+            double a = Double.parseDouble(num1.getText());
+            double b = Double.parseDouble(num2.getText());
+            double res = switch (op) {
+                case '+' -> a + b;
+                case '-' -> a - b;
+                case '*' -> a * b;
+                case '/' -> b != 0 ? a / b : Double.NaN;
+                default  -> 0;
+            };
+            result.setText(b == 0 && op == '/' ? "Error: Div by 0" : String.valueOf(res));
+        } catch (NumberFormatException ex) {
+            result.setText("Invalid Input");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Calculator();
+    }
+}
+`````````````````| *(add output screenshot here)* |
 
 ---
 
-### Assignments 12–14
-> *To be updated as new assignments are completed.*
+### Assignment 12
+
+**Java Swing — Freehand Drawing App with color buttons and brush size slider.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class DrawingApp extends JFrame {
+    Color drawColor = Color.BLACK;
+    int brushSize = 5;
+    int prevX = -1, prevY = -1;
+    Image canvas;
+    Graphics2D g2d;
+
+    DrawingApp() {
+        setTitle("Freehand Drawing");
+        setSize(700, 550);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        JPanel toolbar = new JPanel();
+        String[] colors = {"Red", "Black", "Blue", "Magenta"};
+        Color[] colorVals = {Color.RED, Color.BLACK, Color.BLUE, Color.MAGENTA};
+
+        for (int i = 0; i < colors.length; i++) {
+            final Color c = colorVals[i];
+            JButton btn = new JButton(colors[i]);
+            btn.addActionListener(e -> drawColor = c);
+            toolbar.add(btn);
+        }
+
+        JSlider slider = new JSlider(1, 30, 5);
+        slider.addChangeListener(e -> brushSize = slider.getValue());
+        toolbar.add(new JLabel("Brush:")); toolbar.add(slider);
+
+        JButton clear = new JButton("Clear");
+        clear.addActionListener(e -> { g2d.setColor(Color.WHITE); g2d.fillRect(0, 0, 700, 500); repaint(); });
+        toolbar.add(clear);
+
+        add(toolbar, BorderLayout.NORTH);
+
+        JPanel drawPanel = new JPanel() {
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (canvas == null) {
+                    canvas = createImage(700, 500);
+                    g2d = (Graphics2D) canvas.getGraphics();
+                    g2d.setColor(Color.WHITE);
+                    g2d.fillRect(0, 0, 700, 500);
+                }
+                g.drawImage(canvas, 0, 0, null);
+            }
+        };
+
+        drawPanel.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e) { prevX = prevY = -1; }
+        });
+        drawPanel.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
+                if (canvas == null) return;
+                g2d.setColor(drawColor);
+                g2d.setStroke(new BasicStroke(brushSize));
+                if (prevX != -1) g2d.drawLine(prevX, prevY, e.getX(), e.getY());
+                prevX = e.getX(); prevY = e.getY();
+                drawPanel.repaint();
+            }
+        });
+
+        add(drawPanel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new DrawingApp();
+    }
+}
+````````````````| *(add output screenshot here)* |
 
 ---
 
+### Assignment 13
+
+**Division class with integer division, float division, remainder, and batch division — all with divide-by-zero exception handling.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+public class Division {
+
+    public int intDivide(int a, int b) throws ArithmeticException {
+        if (b == 0) throw new ArithmeticException("Integer division by zero!");
+        return a / b;
+    }
+
+    public double floatDivide(double a, double b) throws ArithmeticException {
+        if (b == 0) throw new ArithmeticException("Float division by zero!");
+        return a / b;
+    }
+
+    public int remainder(int a, int b) throws ArithmeticException {
+        if (b == 0) throw new ArithmeticException("Modulo by zero!");
+        return a % b;
+    }
+
+    public void divideAll(int[] numbers, int divisor) {
+        if (divisor == 0) {
+            System.out.println("Cannot divide: divisor is zero.");
+            return;
+        }
+        System.out.println("Dividing all by " + divisor + ":");
+        for (int num : numbers)
+            System.out.println(num + " / " + divisor + " = " + (double) num / divisor);
+    }
+
+    public static void main(String[] args) {
+        Division d = new Division();
+
+        try {
+            System.out.println("Int Divide: " + d.intDivide(20, 4));
+            System.out.println("Float Divide: " + d.floatDivide(22.5, 4.5));
+            System.out.println("Remainder: " + d.remainder(17, 5));
+            d.divideAll(new int[]{10, 20, 30}, 3);
+
+            // Test exception
+            System.out.println(d.intDivide(10, 0));
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+    }
+}
+```````````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 14
+
+**Student Registration Form using Java Swing and JDBC — stores student data in a MySQL database.**
+
+> **Note:** Requires MySQL JDBC Driver (`mysql-connector-java.jar`) in NetBeans project libraries.  
+> Create DB first: `CREATE DATABASE college; USE college;`  
+> `CREATE TABLE students(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), roll VARCHAR(20), branch VARCHAR(30), email VARCHAR(50));`
+
+| Code | Output |
+| --- | --- |
+| ```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class StudentRegistration extends JFrame {
+    JTextField nameField   = new JTextField(20);
+    JTextField rollField   = new JTextField(20);
+    JTextField branchField = new JTextField(20);
+    JTextField emailField  = new JTextField(20);
+    JLabel statusLabel     = new JLabel(" ");
+
+    StudentRegistration() {
+        setTitle("Student Registration");
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new GridLayout(6, 2, 5, 5));
+
+        add(new JLabel("Name:"));    add(nameField);
+        add(new JLabel("Roll No:")); add(rollField);
+        add(new JLabel("Branch:"));  add(branchField);
+        add(new JLabel("Email:"));   add(emailField);
+
+        JButton submit = new JButton("Register");
+        submit.addActionListener(e -> saveToDatabase());
+        add(submit); add(statusLabel);
+
+        setVisible(true);
+    }
+
+    void saveToDatabase() {
+        String url  = "jdbc:mysql://localhost:3306/college";
+        String user = "root";
+        String pass = "";   // change to your password
+        try (Connection con = DriverManager.getConnection(url, user, pass)) {
+            String sql = "INSERT INTO students(name, roll, branch, email) VALUES(?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nameField.getText());
+            ps.setString(2, rollField.getText());
+            ps.setString(3, branchField.getText());
+            ps.setString(4, emailField.getText());
+            ps.executeUpdate();
+            statusLabel.setText("Registered successfully!");
+        } catch (SQLException ex) {
+            statusLabel.setText("DB Error: " + ex.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        new StudentRegistration();
+    }
+}
+``````````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 15
+
+**JFrame with 10 buttons — each button performs a different functionality.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TenButtons extends JFrame {
+
+    TenButtons() {
+        setTitle("10 Buttons Demo");
+        setSize(500, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new GridLayout(5, 2, 10, 10));
+
+        JButton b1 = new JButton("1. Show Message");
+        b1.addActionListener(e -> JOptionPane.showMessageDialog(this, "Hello from Button 1!"));
+
+        JButton b2 = new JButton("2. Date & Time");
+        b2.addActionListener(e -> JOptionPane.showMessageDialog(this, new java.util.Date().toString()));
+
+        JButton b3 = new JButton("3. Random Number");
+        b3.addActionListener(e -> JOptionPane.showMessageDialog(this, "Random: " + (int)(Math.random()*100)));
+
+        JButton b4 = new JButton("4. Change BG Color");
+        b4.addActionListener(e -> getContentPane().setBackground(
+            new Color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255))));
+
+        JButton b5 = new JButton("5. Count Characters");
+        b5.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog("Enter a string:");
+            if (input != null) JOptionPane.showMessageDialog(this, "Length: " + input.length());
+        });
+
+        JButton b6 = new JButton("6. Reverse String");
+        b6.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog("Enter a string:");
+            if (input != null)
+                JOptionPane.showMessageDialog(this, new StringBuilder(input).reverse().toString());
+        });
+
+        JButton b7 = new JButton("7. Even / Odd");
+        b7.addActionListener(e -> {
+            String input = JOptionPane.showInputDialog("Enter a number:");
+            if (input != null) {
+                int n = Integer.parseInt(input);
+                JOptionPane.showMessageDialog(this, n + " is " + (n%2==0 ? "Even" : "Odd"));
+            }
+        });
+
+        JButton b8 = new JButton("8. Quick Calc");
+        b8.addActionListener(e -> {
+            double a = Double.parseDouble(JOptionPane.showInputDialog("Enter num 1:"));
+            double b2 = Double.parseDouble(JOptionPane.showInputDialog("Enter num 2:"));
+            JOptionPane.showMessageDialog(this, "Sum=" + (a+b2) + "  Product=" + (a*b2));
+        });
+
+        JButton b9 = new JButton("9. Exit");
+        b9.addActionListener(e -> {
+            int res = JOptionPane.showConfirmDialog(this, "Exit?");
+            if (res == JOptionPane.YES_OPTION) System.exit(0);
+        });
+
+        JButton b10 = new JButton("10. About");
+        b10.addActionListener(e -> JOptionPane.showMessageDialog(this,
+            "Java Swing Demo\nProgram 15\nNetBeans"));
+
+        add(b1); add(b2); add(b3); add(b4); add(b5);
+        add(b6); add(b7); add(b8); add(b9); add(b10);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new TenButtons();
+    }
+}
+`````````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 16
+
+**Create three classes (A, B, C) — each with a method that prints 1 to 100 along with the class name.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+class ClassA {
+    public void printNumbers() {
+        for (int i = 1; i <= 100; i++)
+            System.out.println("ClassA: " + i);
+    }
+}
+
+class ClassB {
+    public void printNumbers() {
+        for (int i = 1; i <= 100; i++)
+            System.out.println("ClassB: " + i);
+    }
+}
+
+class ClassC {
+    public void printNumbers() {
+        for (int i = 1; i <= 100; i++)
+            System.out.println("ClassC: " + i);
+    }
+}
+
+public class MultiClassPrint {
+    public static void main(String[] args) {
+        new ClassA().printNumbers();
+        new ClassB().printNumbers();
+        new ClassC().printNumbers();
+    }
+}
+````````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 17
+
+**Three classes printing 1 to 10 sequentially — without using threads.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+class PrinterX {
+    public void print() {
+        System.out.println("\n--- PrinterX ---");
+        for (int i = 1; i <= 10; i++)
+            System.out.println("PrinterX: " + i);
+    }
+}
+
+class PrinterY {
+    public void print() {
+        System.out.println("\n--- PrinterY ---");
+        for (int i = 1; i <= 10; i++)
+            System.out.println("PrinterY: " + i);
+    }
+}
+
+class PrinterZ {
+    public void print() {
+        System.out.println("\n--- PrinterZ ---");
+        for (int i = 1; i <= 10; i++)
+            System.out.println("PrinterZ: " + i);
+    }
+}
+
+public class SequentialPrint {
+    public static void main(String[] args) {
+        System.out.println("Running without threads - strictly sequential:");
+        new PrinterX().print();
+        new PrinterY().print();
+        new PrinterZ().print();
+        System.out.println("\nAll done. Output is always in order (X -> Y -> Z).");
+    }
+}
+```````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 18
+
+**Three classes printing 1 to 10 using the Runnable interface.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+class RunnableX implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("RunnableX: " + i);
+            try { Thread.sleep(10); } catch (InterruptedException e) {}
+        }
+    }
+}
+
+class RunnableY implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("RunnableY: " + i);
+            try { Thread.sleep(10); } catch (InterruptedException e) {}
+        }
+    }
+}
+
+class RunnableZ implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("RunnableZ: " + i);
+            try { Thread.sleep(10); } catch (InterruptedException e) {}
+        }
+    }
+}
+
+public class RunnableDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new Thread(new RunnableX());
+        Thread t2 = new Thread(new RunnableY());
+        Thread t3 = new Thread(new RunnableZ());
+
+        t1.start(); t2.start(); t3.start();
+
+        t1.join(); t2.join(); t3.join();
+        System.out.println("All threads finished!");
+    }
+}
+``````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 19
+
+**File copy using both Byte Stream and Character Stream.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.io.*;
+
+public class FileCopy {
+
+    public static void copyByteStream(String src, String dest) {
+        try (FileInputStream fis = new FileInputStream(src);
+             FileOutputStream fos = new FileOutputStream(dest)) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = fis.read(buffer)) != -1)
+                fos.write(buffer, 0, bytesRead);
+            System.out.println("Byte Stream copy done: " + dest);
+        } catch (IOException e) {
+            System.out.println("Error (Byte Stream): " + e.getMessage());
+        }
+    }
+
+    public static void copyCharStream(String src, String dest) {
+        try (FileReader fr = new FileReader(src);
+             FileWriter fw = new FileWriter(dest)) {
+            char[] buffer = new char[1024];
+            int charsRead;
+            while ((charsRead = fr.read(buffer)) != -1)
+                fw.write(buffer, 0, charsRead);
+            System.out.println("Character Stream copy done: " + dest);
+        } catch (IOException e) {
+            System.out.println("Error (Char Stream): " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        try (FileWriter fw = new FileWriter("source.txt")) {
+            fw.write("Hello, this is test content for file copy demonstration!\n");
+            fw.write("Java file I/O is simple and powerful.");
+        }
+
+        copyByteStream("source.txt", "copy_byte.txt");
+        copyCharStream("source.txt", "copy_char.txt");
+    }
+}
+`````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 20
+
+**ArrayList operations — add, remove, search, update, and iteration.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("Apple"); list.add("Banana"); list.add("Cherry");
+        list.add("Date");  list.add("Elderberry");
+        System.out.println("After adding: " + list);
+
+        list.remove("Date");
+        System.out.println("After removing 'Date': " + list);
+
+        System.out.println("Contains 'Cherry': " + list.contains("Cherry"));
+        System.out.println("Index of 'Banana': " + list.indexOf("Banana"));
+
+        list.set(1, "Blueberry");
+        System.out.println("After updating index 1: " + list);
+
+        System.out.print("Iterating: ");
+        Iterator<String> it = list.iterator();
+        while (it.hasNext()) System.out.print(it.next() + " ");
+        System.out.println();
+
+        System.out.println("Size: " + list.size());
+    }
+}
+````````| *(add output screenshot here)* |
+
+---
+
+### Assignment 21
+
+**LinkedList operations — insert at beginning, middle, and end; delete; search; display.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.add(10); list.add(20); list.add(40); list.add(50);
+        System.out.println("Initial: " + list);
+
+        list.addFirst(5);
+        System.out.println("After addFirst(5): " + list);
+
+        list.add(3, 30);
+        System.out.println("After add(3, 30): " + list);
+
+        list.addLast(60);
+        System.out.println("After addLast(60): " + list);
+
+        list.removeFirst();
+        list.removeLast();
+        System.out.println("After removing first & last: " + list);
+
+        System.out.println("Contains 30: " + list.contains(30));
+        System.out.println("Index of 30: " + list.indexOf(30));
+
+        System.out.print("Forward traversal: ");
+        ListIterator<Integer> it = list.listIterator();
+        while (it.hasNext()) System.out.print(it.next() + " ");
+        System.out.println();
+    }
+}
+```````| *(add output screenshot here)* |
+
+---
+
+### Assignment 22
+
+**Stack operations using Java Collections Framework — push, pop, peek, isEmpty, and search.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.util.Stack;
+
+public class StackDemo {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        System.out.println("Is empty: " + stack.isEmpty());
+
+        stack.push(10); stack.push(20); stack.push(30);
+        stack.push(40); stack.push(50);
+        System.out.println("After push: " + stack);
+
+        System.out.println("Peek (top): " + stack.peek());
+
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("After pop: " + stack);
+
+        System.out.println("Search 20 (position from top): " + stack.search(20));
+
+        System.out.println("Is empty: " + stack.isEmpty());
+
+        while (!stack.isEmpty())
+            System.out.print("Popped: " + stack.pop() + "  ");
+        System.out.println("\nStack is now empty: " + stack.isEmpty());
+    }
+}
+``````| *(add output screenshot here)* |
+
+---
+
+### Assignment 23
+
+**HashMap operations — insert, retrieve, remove, and iterate key-value pairs.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        HashMap<Integer, String> map = new HashMap<>();
+
+        map.put(1, "Alice");
+        map.put(2, "Bob");
+        map.put(3, "Charlie");
+        map.put(4, "Diana");
+        System.out.println("HashMap: " + map);
+
+        System.out.println("Key 2 -> " + map.get(2));
+
+        System.out.println("Contains key 3: " + map.containsKey(3));
+        System.out.println("Contains value 'Bob': " + map.containsValue("Bob"));
+
+        map.remove(1);
+        System.out.println("After removing key 1: " + map);
+
+        System.out.println("Iterating:");
+        for (Map.Entry<Integer, String> entry : map.entrySet())
+            System.out.println("  " + entry.getKey() + " => " + entry.getValue());
+
+        System.out.println("Size: " + map.size());
+    }
+}
+`````| *(add output screenshot here)* |
+
+---
+
+### Assignment 24
+
+**TreeMap operations — insert, display in sorted order, search, and remove.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class TreeMapDemo {
+    public static void main(String[] args) {
+        TreeMap<Integer, String> tmap = new TreeMap<>();
+
+        tmap.put(5, "Eve");
+        tmap.put(2, "Bob");
+        tmap.put(8, "Henry");
+        tmap.put(1, "Alice");
+        tmap.put(4, "Diana");
+
+        System.out.println("TreeMap (sorted): " + tmap);
+
+        System.out.println("First key: " + tmap.firstKey());
+        System.out.println("Last key:  " + tmap.lastKey());
+
+        System.out.println("Contains key 4: " + tmap.containsKey(4));
+        System.out.println("Value at key 2: " + tmap.get(2));
+
+        tmap.remove(5);
+        System.out.println("After removing key 5: " + tmap);
+
+        System.out.println("Iterate:");
+        for (Map.Entry<Integer, String> e : tmap.entrySet())
+            System.out.println("  " + e.getKey() + " -> " + e.getValue());
+    }
+}
+````| *(add output screenshot here)* |
+
+---
+
+### Assignment 25
+
+**Stack implementation using arrays — push, pop, peek, display, with overflow and underflow handling.**
+
+| Code | Output |
+| --- | --- |
+| ```java
+public class ArrayStack {
+    int[] stack;
+    int top;
+    int maxSize;
+
+    ArrayStack(int size) {
+        maxSize = size;
+        stack = new int[maxSize];
+        top = -1;
+    }
+
+    public void push(int val) {
+        if (top == maxSize - 1) {
+            System.out.println("Stack OVERFLOW! Cannot push " + val);
+            return;
+        }
+        stack[++top] = val;
+        System.out.println("Pushed: " + val);
+    }
+
+    public int pop() {
+        if (top == -1) {
+            System.out.println("Stack UNDERFLOW! Stack is empty.");
+            return -1;
+        }
+        return stack[top--];
+    }
+
+    public int peek() {
+        if (top == -1) { System.out.println("Stack is empty."); return -1; }
+        return stack[top];
+    }
+
+    public boolean isEmpty() { return top == -1; }
+
+    public void display() {
+        if (top == -1) { System.out.println("Stack is empty."); return; }
+        System.out.print("Stack (top to bottom): ");
+        for (int i = top; i >= 0; i--) System.out.print(stack[i] + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ArrayStack s = new ArrayStack(5);
+
+        s.push(10); s.push(20); s.push(30); s.push(40); s.push(50);
+        s.push(60);   // Overflow test
+        s.display();
+        System.out.println("Peek: " + s.peek());
+        System.out.println("Pop: " + s.pop());
+        s.display();
+
+        s.pop(); s.pop(); s.pop(); s.pop();
+        s.pop();  // Underflow test
+        System.out.println("Is Empty: " + s.isEmpty());
+    }
+}
+``` | *(add output screenshot here)* |
+
+---
 
 ## 👩‍💻 Author
 
